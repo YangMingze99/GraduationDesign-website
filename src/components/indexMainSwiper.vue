@@ -14,7 +14,7 @@
 				</div>
 				<div class="swiper-slide">
 					<router-link to="/index">
-						<img src="@/assets/images/2.png" alt=""> 
+						<img src="@/assets/images/2.png" alt="">
 						<b-card tag="article" class="cards">
 							<b-card-text>
 								这是一段测试标题
@@ -22,9 +22,36 @@
 						</b-card>
 					</router-link>
 				</div>
-				<div class="swiper-slide"><img src="@/assets/images/3.png" alt=""> </div>
-				<div class="swiper-slide"><img src="@/assets/images/4.png" alt=""> </div>
-				<div class="swiper-slide"><img src="@/assets/images/5.png" alt=""> </div>
+				<div class="swiper-slide">
+					<router-link to="/index">
+						<img src="@/assets/images/3.png" alt="">
+						<b-card tag="article" class="cards">
+							<b-card-text>
+								这是一段测试标题
+							</b-card-text>
+						</b-card>
+					</router-link>
+				</div>
+				<div class="swiper-slide">
+					<router-link to="/index">
+						<img src="@/assets/images/4.png" alt="">
+						<b-card tag="article" class="cards">
+							<b-card-text>
+								这是一段测试标题hhhhhhh
+							</b-card-text>
+						</b-card>
+					</router-link>
+				</div>
+				<div class="swiper-slide">
+					<router-link to="/index">
+						<img src="@/assets/images/5.png" alt="">
+						<b-card tag="article" class="cards">
+							<b-card-text>
+								这是一段测试标题
+							</b-card-text>
+						</b-card>
+					</router-link>
+				</div>
 			</div>
 			<div class="swiper-pagination"></div>
 			<div class="swiper-button-next"></div>
@@ -78,11 +105,11 @@
 				},
 				speed: 800,
 				// effect: 'fade',
-				autoplay: {
-					delay: 3000,
-					stopOnLastSlide: false,
-					disableOnInteraction: false,
-				},
+				// autoplay: {
+				// 	delay: 3000,
+				// 	stopOnLastSlide: false,
+				// 	disableOnInteraction: false,
+				// },
 				slidesgrid: {
 					slidesOffsetBefore: 50 + 'px'
 				}
@@ -99,7 +126,8 @@
 		z-index: 8;
 		top: 0;
 	}
-	.rightCover{
+
+	.rightCover {
 		background-color: #f8f9faba;
 		width: 16.6%;
 		position: absolute;
@@ -108,10 +136,10 @@
 		z-index: 8;
 		top: 0;
 	}
+
 	.swiper-container {
 		width: 100%;
 		margin-top: 1px;
-		max-height: 450px;
 		overflow: hidden;
 		position: relative;
 
@@ -122,9 +150,11 @@
 					width: 100%;
 					// height:60%;
 				}
-
 				.cards {
+					background-color: red;
 					position: absolute;
+					bottom: 0;
+					right: 0;
 				}
 			}
 		}
@@ -142,6 +172,12 @@
 			color: #ffffff;
 			font-weight: 900;
 			size: 10%;
+		}
+		.card-body{
+			padding: 0.5rem 1rem;
+			.card-text{
+				color: white;
+			}
 		}
 	}
 </style>
