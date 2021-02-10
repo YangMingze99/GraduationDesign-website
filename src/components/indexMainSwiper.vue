@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="swiperbox" @mouseenter="handleSwiperMouseEnter" @mouseleave="handleSwiperMouseLeave">
 		<div class="swiper-container">
 			<div class="swiper-wrapper">
 				<div class="swiper-slide">
@@ -54,10 +54,8 @@
 				</div>
 			</div>
 			<div class="swiper-pagination"></div>
-			<div class="swiper-button-next"></div>
-			<div class="swiper-button-prev"></div>
-			<div class="leftCover"></div>
-			<div class="rightCover"></div>
+			<div class="swiper-button-next" :class="display"></div>
+			<div class="swiper-button-prev" :class="display"></div>
 		</div>
 	</div>
 
@@ -69,27 +67,27 @@
 	export default {
 		data() {
 			return {
-
+				display: "hide"
 			}
 		},
 		components: {
 
 		},
 		methods: {
-			onSwiper(swiper) {
-				console.log(swiper)
+			handleSwiperMouseEnter(e) {
+				this.$data.display = "show"
 			},
-			onSlideChange() {
-				console.log('slide change')
-			},
+			handleSwiperMouseLeave(e) {
+				this.$data.display = "hide"
+			}
 		},
 		mounted() {
 			new Swiper('.swiper-container', {
-				slidesPerView: 1.5,
-				centeredSlides: true,
+				// slidesPerView: 1.5,
+				// centeredSlides: true,
 
 				// slidesOffsetBefore:'5rem',
-				spaceBetween: 0,
+				// spaceBetween: 0,
 				preventClicks: true, //默认true
 				loop: true,
 				// 如果需要分页器
@@ -104,80 +102,144 @@
 					prevEl: '.swiper-button-prev',
 				},
 				speed: 800,
-				// effect: 'fade',
+				effect: 'fade',
 				// autoplay: {
 				// 	delay: 3000,
 				// 	stopOnLastSlide: false,
 				// 	disableOnInteraction: false,
 				// },
-				slidesgrid: {
-					slidesOffsetBefore: 50 + 'px'
-				}
+				// slidesgrid: {
+				// 	slidesOffsetBefore: 50 + 'px'
+				// }
 			})
 		}
 	};
 </script>
 <style lang="less" scoped="scoped">
-	.leftCover {
-		background-color: #f8f9faba;
-		width: 16.6%;
-		position: absolute;
-		height: 100%;
-		z-index: 8;
-		top: 0;
+	.hide {
+		display: none;
 	}
 
-	.rightCover {
-		background-color: #f8f9faba;
-		width: 16.6%;
-		position: absolute;
-		height: 100%;
-		right: 0;
-		z-index: 8;
-		top: 0;
+	.show {
+		display: block;
+	}
+
+	.swiperbox {
+		margin-top: 4.3rem;
 	}
 
 	.swiper-container {
 		width: 100%;
+		height: 30rem;
 		margin-top: 1px;
 		overflow: hidden;
 		position: relative;
-
 		.swiper-wrapper {
 
 			.swiper-slide {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
 				img {
 					width: 100%;
-					// height:60%;
 				}
+
 				.cards {
-					background-color: red;
+					background-color: rgba(0, 0, 0, .7);
 					position: absolute;
 					bottom: 0;
-					right: 0;
+					left: 5%;
 				}
 			}
 		}
 
 		.swiper-button-prev {
-			left: 17%;
+			left: 1%;
 		}
 
 		.swiper-button-next {
-			right: 17%;
+			right: 1%;
 		}
 
 		.swiper-button-prev,
 		.swiper-button-next {
 			color: #ffffff;
 			font-weight: 900;
-			size: 10%;
+			size: 6%;
 		}
-		.card-body{
+
+		.card-body {
 			padding: 0.5rem 1rem;
-			.card-text{
+
+			.card-text {
 				color: white;
 			}
+		}
+
+		.swiper-pagination {
+			padding-left: 80%;
+		}
+	}
+	//ipad 横屏
+	@media only screen and (min-width : 768px) and (max-width : 1024px) and (orientation : landscape) {
+		.swiper-container {
+			height: 20rem !important;
+		}
+		
+		.swiper-slide img {
+			height: 100%;
+		}
+		
+	}
+	
+	//ipad 竖屏
+	@media only screen and (min-width : 768px) and (max-width : 1024px) and (orientation : portrait) {
+		.swiper-container {
+			height: 20rem !important;
+		}
+		
+		.swiper-slide img {
+			height: 100%;
+		}
+		
+		.swiper-button-prev,
+		.swiper-button-next {
+			display: none;
+		}
+		
+		.swiper-wrapper {
+			.swiper-slide {
+				.cards {
+					left: 0 !important;
+				}
+			}
+		}
+	}
+
+	// 手机端适配
+	@media screen and (max-width: 767px) {
+		.swiper-container {
+			height: 12.5rem;
+		}
+
+		.swiper-slide img {
+			height: 100%;
+		}
+
+		.swiper-wrapper {
+			.swiper-slide {
+				.cards {
+					left: 0 !important;
+				}
+			}
+		}
+		.swiper-button-prev,
+		.swiper-button-next {
+			display: none;
+		}
+		.swiper-pagination {
+			padding-left: 75% !important;
 		}
 	}
 </style>
