@@ -113,7 +113,7 @@
 	//手机
 	@media screen and (max-width: 767px) {
 		.navbar-toggler{
-			margin-right: 0.8rem;
+			margin-right: 0.5rem;
 		}
 	}
 </style>

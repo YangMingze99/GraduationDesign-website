@@ -159,7 +159,7 @@
 		}
 	}
 
-	//ipaad 横屏（pro）
+	//ipad 横屏（pro）
 	@media only screen and (min-width : 1025px) and (orientation : landscape) {
 		ul{
 			margin-bottom: 2.8rem;

@@ -17,18 +17,31 @@
 				</article>
 			</div>
 			<div class="containerBox_top_moreBtn">
-				<router-link to="#" target="_blank">查看更多</router-link>
+				<router-link :to='moreBtnUrl' target="_blank">查看更多</router-link>
 			</div>
 		</div>
-
+		
+		<div class="containerBox_mid animate__animated animate__fadeInUp">
+			<div class="containerBox_mid_title">
+				<ul>
+					<li class="articleBarSelected">学团工作</li>
+				</ul>
+			</div>
+			<newsItemTwo></newsItemTwo>
+		</div>
+		<div class="containerBox_bot animate__animated animate__fadeInRight">
+			
+		</div>
 	</div>
 </template>
 <script>
 	import newsItemOne from '@/components/newsItemComponents/newsItem_1.vue'
+	import newsItemTwo from '@/components/newsItemComponents/newsItem_2.vue'
 	export default {
 		name: 'indexContainer',
 		components: {
-			newsItemOne
+			newsItemOne,
+			newsItemTwo
 		},
 		data() {
 			return {
@@ -36,7 +49,8 @@
 				articleBarIsSelected: {
 					articleBarOne: true,
 					articleBarTwo: false,
-				}
+				},
+				moreBtnUrl:'collage'
 			};
 		},
 		methods: {
@@ -48,10 +62,12 @@
 			handleSelectBarOne(e) {
 				this.$data.articleBarIsSelected.articleBarOne = true;
 				this.$data.articleBarIsSelected.articleBarTwo = false;
+				this.$data.moreBtnUrl = 'collage';
 			},
 			handleSelectBarTwo(e) {
 				this.$data.articleBarIsSelected.articleBarOne = false;
 				this.$data.articleBarIsSelected.articleBarTwo = true;
+				this.$data.moreBtnUrl = 'message';
 			}
 		},
 		// mounted() {
@@ -93,7 +109,7 @@
 		background-color: rgb(245, 245, 245);
 		position: relative;
 		margin-bottom: 6.25rem;
-
+		//上部分
 		.containerBox_top {
 			width: 88%;
 			margin: 0 auto;
@@ -164,6 +180,32 @@
 				}
 			}
 		}
+		//中部分
+		.containerBox_mid{
+			margin-top: 120px;
+			width: 100%;
+			min-height: 31.25rem;
+			ul{
+				position: relative;
+				list-style: none;
+				width: 200px;
+				left: 95px;
+				margin-bottom: 20px;
+				li{
+					font-weight: 700;
+					font-size: 1.5rem;
+				}
+			}
+		}
+		
+		//下部分盒子
+		.containerBox_bot{
+			margin-top: 120px;
+			width: 100%;
+			min-height: 31.25rem;
+			background-color: #337ab7;
+			
+		}
 	}
 
 	//ipad 横屏（pro）
@@ -206,7 +248,6 @@
 		}
 
 		.containerBox_top {
-			
 
 			.containerBox_top_articleBar {
 				ul {
