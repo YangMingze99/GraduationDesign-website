@@ -1,8 +1,8 @@
 <template>
-	<div class="clearfix">
-		<ul >
+	<div>
+		<ul class="clearfix">
 			<li>
-				<div class="card newsItemBox">
+				<div class="card newsItemBox ">
 					<div class="row no-gutters">
 						<div class="col-md-4 col-sm-4 col-xs-4">
 							<img src="@/assets/images/1.png" class="card-img">
@@ -82,7 +82,7 @@
 				<div class="card newsItemBox">
 					<div class="row no-gutters">
 						<div class="col-md-4 col-sm-4 col-xs-4">
-							<img src="@/assets/images/1.png" class="card-img">
+							<img src="@/assets/images/4.png" class="card-img">
 						</div>
 						<div class="col-md-8 col-sm-8 col-xs-8">
 							<div class="card-body">
@@ -145,24 +145,27 @@
 
 	ul {
 		position: relative;
-		left: 5%;
+		left: 6%;
 		list-style: none;
 		width: 90%;
+
 		li {
 			float: left;
 			padding: 1rem;
+
 			.newsItemBox,
 			.card-body {
 				max-width: 40rem;
 				max-height: 9.6875rem;
 			}
 		}
-		li:hover{
+
+		li:hover {
 			z-index: 2;
-			-webkit-box-shadow: 0 10px 30px rgba(0,0,0,.2);
-			box-shadow: 0 10px 30px rgba(0,0,0,.2);
-			-webkit-transform: translate3d(0,-2px,0);
-			transform: translate3d(0,-2px,0);
+			-webkit-box-shadow: 0 10px 30px rgba(0, 0, 0, .2);
+			box-shadow: 0 10px 30px rgba(0, 0, 0, .2);
+			-webkit-transform: translate3d(0, -2px, 0);
+			transform: translate3d(0, -2px, 0);
 		}
 	}
 
@@ -196,31 +199,65 @@
 		-webkit-box-orient: vertical;
 	}
 
-	
-	//ipad mini 横
-	@media only screen and (min-width : 768px) and (max-width : 1024px) and (orientation : landscape) {
-
-		.newsItemBox,
-		.card-body {
-			max-width: 28rem !important;
+	// ipad pro 竖
+	@media only screen and (min-width : 1023px) and (orientation : portrait) {
+		ul {
+			li {
+				.newsItemBox,
+				.card-body {
+					max-width: 59rem !important;
+					max-height: 35rem !important;
+				}
+				.card-title{
+					font-size: 25px !important;
+				}
+				.card-text{
+					height: 45px;
+					font-size: 19px;
+				}
+			}
 		}
+	}
+
+	// ipad pro 横
+	@media only screen and (min-width : 1366px) and (max-width : 1368px) and (orientation : landscape) {
+		ul{
+			li{
+				.newsItemBox,
+				.card-body {
+					max-width: 36.3rem !important;
+				}
+			}
+		}
+	}
+
+	//ipad  横
+	@media only screen and (min-width : 768px) and (max-width : 1024px) and (orientation : landscape) {
 
 		ul {
 			li {
 				padding: 0.8rem !important;
+
+				.newsItemBox,
+				.card-body {
+					max-width: 27rem !important;
+				}
 			}
 		}
 
 	}
+
 	//ipad 竖
 	@media only screen and (min-width : 768px) and (max-width : 1024px) and (orientation : portrait) {
 		ul {
 			left: 6.2%;
 		}
+
 		.newsItemBox,
 		.card-body {
 			max-width: 42rem !important;
 		}
+
 		.card-text {
 			p {
 				margin-bottom: 0;
@@ -228,11 +265,14 @@
 			}
 		}
 	}
+
 	//手机端
 	@media screen and (max-width: 767px) {
 		ul {
 			left: 5% !important;
+
 			li {
+
 				.newsItemBox,
 				.card-body {
 					max-height: 23rem !important;

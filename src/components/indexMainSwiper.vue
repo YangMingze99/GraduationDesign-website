@@ -103,11 +103,11 @@
 				},
 				speed: 800,
 				effect: 'fade',
-				// autoplay: {
-				// 	delay: 3000,
-				// 	stopOnLastSlide: false,
-				// 	disableOnInteraction: false,
-				// },
+				autoplay: {
+					delay: 3000,
+					stopOnLastSlide: false,
+					disableOnInteraction: false,
+				},
 				// slidesgrid: {
 				// 	slidesOffsetBefore: 50 + 'px'
 				// }
