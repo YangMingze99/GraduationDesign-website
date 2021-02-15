@@ -107,15 +107,15 @@
 				screenWidth: '',
 				screenHeight: '',
 				dataCountDownOptions:{
-					duration:6000
+					duration:5000
 				}
 			};
 		},
 		methods: {
 			scrollListener() {
 				this.scroll = document.documentElement.scrollTop || document.body.scrollTop;
-				console.log(this.$data.screenWidth);
-				console.log(this.scroll,'indexContainer');
+				// console.log(this.$data.screenWidth);
+				// console.log(this.scroll,'indexContainer');
 				//手机
 				if(this.$data.screenWidth <=540 && this.scroll >= 3200){
 					if (!this.$data.dataCountDownFlag) {

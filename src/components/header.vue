@@ -13,14 +13,14 @@
 				<!-- Right aligned nav items -->
 				<b-navbar-nav class="ml-auto">
 					<b-nav-item to="/index">首页</b-nav-item>
-					<b-nav-item to="/collage">学院资源</b-nav-item>
-					<b-nav-item to="#">师资队伍</b-nav-item>
-					<b-nav-item to="#">教学工作</b-nav-item>
-					<b-nav-item to="#">科研工作</b-nav-item>
-					<b-nav-item to="#">实验教学</b-nav-item>
-					<b-nav-item to="#">党建工作</b-nav-item>
-					<b-nav-item to="#">学团工作</b-nav-item>
-					<b-nav-item to="#">招生就业</b-nav-item>
+					<b-nav-item to="/collage">学院概况</b-nav-item>
+					<b-nav-item to="/teacherResources">师资队伍</b-nav-item>
+					<b-nav-item to="/teachingWork">教学工作</b-nav-item>
+					<b-nav-item to="/scientificResearch">科研工作</b-nav-item>
+					<b-nav-item to="/experimentalTeaching">实验教学</b-nav-item>
+					<b-nav-item to="/partyBuilding">党建工作</b-nav-item>
+					<b-nav-item to="/leagueWork">学团工作</b-nav-item>
+					<b-nav-item to="/employment">招生就业</b-nav-item>
 				</b-navbar-nav>
 			</b-collapse>
 		</b-navbar>
@@ -52,7 +52,7 @@
 		height: 80%;
 	}
 	.headerbox {
-		max-height: 3.125rem;
+		// max-height: 3.125rem;
 		z-index: 9;
 		width: 100%;
 		top: 0;

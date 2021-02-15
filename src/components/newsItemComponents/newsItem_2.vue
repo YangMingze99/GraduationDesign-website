@@ -155,7 +155,7 @@
 
 			.newsItemBox,
 			.card-body {
-				max-width: 40rem;
+				max-width: 39rem;
 				max-height: 9.6875rem;
 			}
 		}
