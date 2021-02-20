@@ -29,7 +29,7 @@
 			</div>
 			<newsItemTwo></newsItemTwo>
 			<div class="containerBox_mid_moreBtn">
-				<router-link to='/xtgz' target="_blank">查看更多</router-link>
+				<router-link to='/leagueWork' target="_blank">查看更多</router-link>
 			</div>
 		</div>
 		<div class="containerBox_bot animate__animated animate__fadeInRight">
@@ -135,12 +135,12 @@
 			handleSelectBarOne(e) {
 				this.$data.articleBarIsSelected.articleBarOne = true;
 				this.$data.articleBarIsSelected.articleBarTwo = false;
-				this.$data.moreBtnUrl = 'collage';
+				this.$data.moreBtnUrl = '/collage/collageactives';
 			},
 			handleSelectBarTwo(e) {
 				this.$data.articleBarIsSelected.articleBarOne = false;
 				this.$data.articleBarIsSelected.articleBarTwo = true;
-				this.$data.moreBtnUrl = 'message';
+				this.$data.moreBtnUrl = '/collage/collageNotice';
 			},
 			startCountdown(that) {
 				for (let refsItem in that.$refs) {

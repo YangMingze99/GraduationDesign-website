@@ -8,11 +8,11 @@
 					 aria-hidden="true"></b-icon></span>
 				<b-breadcrumb :items="items"></b-breadcrumb>
 			</div>
-			<div class="newsList" :style="{height:newsListBoxHeight}">
-				<div class="newsList_left">
+			<div class="newsList clearfix">
+				<div class="newsList_left clearfix">
 					<navBarItem :currentClassify="items[1]" :currentItem="items[items.length-1]"></navBarItem>
 				</div>
-				<div class="newsList_right" ref="rightList">
+				<div class="newsList_right clearfix" ref="rightList">
 					<router-view :key='$route.fullPath'></router-view>
 				</div>
 			</div>
@@ -35,7 +35,6 @@
 		data() {
 			return {
 				items: [],
-				newsListBoxHeight: ''
 			}
 		},
 		created: function() {
@@ -59,15 +58,8 @@
 		watch: {
 			'$route'(to, from) {
 				this.matchedArr();
-				// console.log(this.$refs.rightList.offsetHeight)
-				this.$data.newsListBoxHeight = this.$refs.rightList.offsetHeight + "px";
 			}
-
-		},
-		mounted() {
-			// console.log(window.getComputedStyle(this.$refs.rightList).height)
-			//设置高度
-			this.$data.newsListBoxHeight = this.$refs.rightList.offsetHeight + "px"
+			
 		},
 		methods: {
 			matchedArr() {
@@ -97,6 +89,7 @@
 	}
 </script>
 <style lang="less" scoped>
+	
 	.newsListBanner {
 		margin-top: 5rem;
 		width: 100%;
@@ -129,7 +122,9 @@
 				}
 
 				li {
-					cursor: pointer;
+					a{
+						
+					}
 				}
 
 				li:nth-last-child(1) {
@@ -141,20 +136,23 @@
 		.newsList {
 			position: relative;
 			margin-top: 25px;
-			display: flex;
+			
 			margin-bottom: 150px;
 
 			.newsList_left {
+				float: left;
 				margin-left: 50px;
+				
 			}
 
 			.newsList_right {
-				position: absolute;
-				border: 1px solid red;
 				width: 70%;
-				left: 25%;
-				top: 55px;
-
+				float: right;
+				position: relative;
+				// border: 1px solid red;
+				margin-right: 4.375rem;
+				margin-top: 3.125rem;
+				padding: 10px;
 			}
 		}
 	}

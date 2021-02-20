@@ -8,16 +8,16 @@
 		<div class="currentClassifyList clearfix">
 			<ul>
 				<li>
-					<router-link :to="currentClassify.to+'/collageIntroduction'">院系介绍</router-link>
+					<router-link  :to="currentClassify.to+'/collageIntroduction'">院系介绍</router-link>
 				</li>
 				<li>
 					<router-link :to="currentClassify.to+'/collageactives'">学院动态</router-link>
 				</li>
 				<li>
-					<router-link :to="currentClassify.to+'/collageactives'">学院动态</router-link>
+					<router-link :to="currentClassify.to+'/collageactives1'">学院动态</router-link>
 				</li>
 				<li>
-					<router-link :to="currentClassify.to+'/collageactives'">学院动态</router-link>
+					<router-link :to="currentClassify.to+'/collageactives2'">学院动态</router-link>
 				</li>
 			</ul>
 		</div>
@@ -58,6 +58,7 @@
 		font-size: 25px;
 		font-weight: 600;
 		position: relative;
+		min-width: 220px;
 	}
 	.currentClassifyTitle::after{
 		display: block;
@@ -76,20 +77,36 @@
 			list-style: none;
 			margin-top: 18px;
 			li{
-				border: 1px solid red;
 				margin-bottom: 10px;
 				height: 50px;
 				line-height: 50px;
 				text-align: center;
+				background-color: #e8e8e8;
 				cursor: pointer;
+				border-radius: 10px;
 				a{
+					border-radius: 10px;
 					color: #000000;
+					display: block;
+					width: 100%;
+					height: 100%;
 				}
 				a:hover{
 					text-decoration: none;
 				}
+				.router-link-active{
+					background-color: #337ab7;
+					color: white;
+					font-weight: 600;
+				}
 			}
-
+			li:hover{
+				background-color: #337ab7;
+				transition: all .8s;
+				a{
+					color: #ffffff;
+				}
+			}
 		}
 	}
 </style>
