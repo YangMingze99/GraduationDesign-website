@@ -40,10 +40,24 @@
 					document.documentElement.scrollTop || document.body.scrollTop;
 				//   console.log(this.scroll);
 			},
+			getObjectId() {
+				let _this = this;
+				this.$api.navItemApi
+					.getParentIDByName(this.$props.currentClassify.text)
+					.then((result) => {
+						_this.$options.methods.getItemList(
+							_this,
+							result.data.data[0].classId
+						);
+					})
+					.catch((err) => {
+						console.warn(err, "id获取失败");
+					});
+			}
 		},
 		mounted() {
 			window.addEventListener("scroll", this.scrollListener);
-		},
+		}
 	};
 </script>
 <style lang="less" scoped>

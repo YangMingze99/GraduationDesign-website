@@ -59,7 +59,6 @@
 			'$route'(to, from) {
 				this.matchedArr();
 			}
-			
 		},
 		methods: {
 			matchedArr() {

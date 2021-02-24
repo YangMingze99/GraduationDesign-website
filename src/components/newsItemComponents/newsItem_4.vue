@@ -177,6 +177,9 @@
 
 		},
 		watch: {
+			'$store.state.currentParentId':function(){
+				// this.getItemList(this.$store.state.currentParentId);
+			},
 			"$route": function(to, from) {
 				//from 对象中包含当前地址
 				//to 对象中包含目标地址

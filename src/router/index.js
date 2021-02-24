@@ -18,7 +18,16 @@ const routes = [{
 		name: "学院概况",
 		component: newsList,
 		redirect: "/collage/collageIntroduction",
-		children: [{
+		children: [
+			{
+				path: 'collageIntroduction',
+				name: '院系介绍',
+				meta: {
+					title: '黑河学院计算机学院-院系介绍'
+				},
+				component: () => import('@/components/newsItemComponents/newsText.vue')
+			},
+			{
 				path: 'collageactives',
 				name: '学院动态',
 				meta: {
@@ -33,14 +42,6 @@ const routes = [{
 					title: '黑河学院计算机学院-通知公告'
 				},
 				component: () => import('@/components/newsItemComponents/newsItem_4.vue')
-			},
-			{
-				path: 'collageIntroduction',
-				name: '院系介绍',
-				meta: {
-					title: '黑河学院计算机学院-院系介绍'
-				},
-				component: () => import('@/components/newsItemComponents/newsText.vue')
 			},
 			{
 				path: 'collageOrganization',
