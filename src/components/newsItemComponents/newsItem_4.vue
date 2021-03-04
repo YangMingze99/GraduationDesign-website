@@ -1,92 +1,15 @@
 <template>
 	<div>
-		<div class="container-fluid newsLists" id="newsList">
-			<div class="row newsItem">
+		<div class="container-fluid newsLists" id="newsList" >
+			<div class="row newsItem" v-for="item in handleNewsItem" :key="item._id">
 				<div class="col-md-10 col-xs-9 newsTitle">
 					<div class="newsIcon">
 						<b-icon icon="triangle-fill"></b-icon>
 					</div>
-					<router-link :to="{path:'/newsDetail',query:{newsId:666,routerRecord:JSON.stringify(routerRecord)}}" target="_blank">热烈祝贺我院荣获校2020年师德师风先进集体荣誉称号</router-link>
+					<router-link :to="{path:'/newsDetail',query:{newsId:item._id,routerRecord:JSON.stringify(routerRecord)}}" target="_blank">{{item.newsTitle}}</router-link>
 				</div>
 				<div class="col-md-2 col-xs-3 newsDate">
-					2020-12-29
-				</div>
-			</div>
-			<div class="row newsItem">
-				<div class="col-md-10 col-xs-9 newsTitle">
-					<div class="newsIcon">
-						<b-icon icon="triangle-fill"></b-icon>
-					</div>
-					<router-link :to="{path:'/newsDetail',query:{newsId:666,routerRecord:JSON.stringify(routerRecord)}}" target="_blank">热烈祝贺我院荣获校2020年师德师风先进集体荣誉称号</router-link>
-				</div>
-				<div class="col-md-2 col-xs-3 newsDate">
-					2020-12-29
-				</div>
-			</div>
-			<div class="row newsItem">
-				<div class="col-md-10 col-xs-9 newsTitle">
-					<div class="newsIcon">
-						<b-icon icon="triangle-fill"></b-icon>
-					</div>
-					<router-link :to="{path:'/newsDetail',query:{newsId:666,routerRecord:JSON.stringify(routerRecord)}}" target="_blank">热烈祝贺我院荣获校2020年师德师风先进集体荣誉称号</router-link>
-				</div>
-				<div class="col-md-2 col-xs-3 newsDate">
-					2020-12-29
-				</div>
-			</div>
-			<div class="row newsItem">
-				<div class="col-md-10 col-xs-9 newsTitle">
-					<div class="newsIcon">
-						<b-icon icon="triangle-fill"></b-icon>
-					</div>
-					<router-link :to="{path:'/newsDetail',query:{newsId:666,routerRecord:JSON.stringify(routerRecord)}}" target="_blank">热烈祝贺我院荣获校2020年师德师风先进集体荣誉称号</router-link>
-				</div>
-				<div class="col-md-2 col-xs-3 newsDate">
-					2020-12-29
-				</div>
-			</div>
-			<div class="row newsItem">
-				<div class="col-md-10 col-xs-9 newsTitle">
-					<div class="newsIcon">
-						<b-icon icon="triangle-fill"></b-icon>
-					</div>
-					<router-link :to="{path:'/newsDetail',query:{newsId:666,routerRecord:JSON.stringify(routerRecord)}}" target="_blank">热烈祝贺我院荣获校2020年师德师风先进集体荣誉称号</router-link>
-				</div>
-				<div class="col-md-2 col-xs-3 newsDate">
-					2020-12-29
-				</div>
-			</div>
-			<div class="row newsItem">
-				<div class="col-md-10 col-xs-9 newsTitle">
-					<div class="newsIcon">
-						<b-icon icon="triangle-fill"></b-icon>
-					</div>
-					<router-link :to="{path:'/newsDetail',query:{newsId:666,routerRecord:JSON.stringify(routerRecord)}}" target="_blank">热烈祝贺我院荣获校2020年师德师风先进集体荣誉称号</router-link>
-				</div>
-				<div class="col-md-2 col-xs-3 newsDate">
-					2020-12-29
-				</div>
-			</div>
-			<div class="row newsItem">
-				<div class="col-md-10 col-xs-9 newsTitle">
-					<div class="newsIcon">
-						<b-icon icon="triangle-fill"></b-icon>
-					</div>
-					<router-link :to="{path:'/newsDetail',query:{newsId:666,routerRecord:JSON.stringify(routerRecord)}}" target="_blank">热烈祝贺我院荣获校2020年师德师风先进集体荣誉称号</router-link>
-				</div>
-				<div class="col-md-2 col-xs-3 newsDate">
-					2020-12-29
-				</div>
-			</div>
-			<div class="row newsItem">
-				<div class="col-md-10 col-xs-9 newsTitle">
-					<div class="newsIcon">
-						<b-icon icon="triangle-fill"></b-icon>
-					</div>
-					<router-link :to="{path:'/newsDetail',query:{newsId:666,routerRecord:JSON.stringify(routerRecord)}}" target="_blank">热烈祝贺我院荣获校2020年师德师风先进集体荣誉称号</router-link>
-				</div>
-				<div class="col-md-2 col-xs-3 newsDate">
-					2020-12-29
+					{{new Date(item.update_time).valueOf() ,pattern = 'YYYY-DD-MM'| dateFormat}}
 				</div>
 			</div>
 		</div>
@@ -102,62 +25,20 @@
 		data() {
 			return {
 				routerRecord: '',
-				perPage: 3,
+				perPage: 8,
 				currentPage: 1,
-				items: [{
-						id: 1,
-						first_name: 'Fred',
-						last_name: 'Flintstone'
-					},
-					{
-						id: 2,
-						first_name: 'Wilma',
-						last_name: 'Flintstone'
-					},
-					{
-						id: 3,
-						first_name: 'Barney',
-						last_name: 'Rubble'
-					},
-					{
-						id: 4,
-						first_name: 'Betty',
-						last_name: 'Rubble'
-					},
-					{
-						id: 5,
-						first_name: 'Pebbles',
-						last_name: 'Flintstone'
-					},
-					{
-						id: 6,
-						first_name: 'Bamm Bamm',
-						last_name: 'Rubble'
-					},
-					{
-						id: 7,
-						first_name: 'The Great',
-						last_name: 'Gazzoo'
-					},
-					{
-						id: 8,
-						first_name: 'Rockhead',
-						last_name: 'Slate'
-					},
-					{
-						id: 9,
-						first_name: 'Pearl',
-						last_name: 'Slaghoople'
-					}
-				]
+				newsItems: ''
 			}
-		},
-		components: {
-
 		},
 		computed: {
 			totalRows() {
-				return this.items.length
+				return this.$data.newsItems.length
+			},
+			newChildId() {
+				return this.$store.state.currentChildrenId
+			},
+			handleNewsItem:function(){
+				return this.$data.newsItems.slice((this.$data.currentPage-1)*this.$data.perPage,this.$data.currentPage*this.$data.perPage)
 			}
 		},
 		created() {
@@ -174,16 +55,31 @@
 					this.$data.routerRecord = temp;
 				}
 			});
-
+			this.getNewsItemByChildId(this.$store.state.currentChildrenId);
 		},
 		watch: {
-			'$store.state.currentParentId':function(){
-				// this.getItemList(this.$store.state.currentParentId);
+			newChildId: {
+				deep: true,
+				handler: function(newId) {
+					this.getNewsItemByChildId(newId);
+				}
 			},
+
 			"$route": function(to, from) {
 				//from 对象中包含当前地址
 				//to 对象中包含目标地址
 				//其实还有一个next参数的，这个参数是控制路由是否跳转的，如果没写，可以不用写next()来代表允许路由跳转，如果写了就必须写next(),否则路由是不会生效的。
+			}
+		},
+		methods: {
+			getNewsItemByChildId(id) {
+				this.$api.newsItemApi
+					.getNewsItemByChildId(id).then((result) => {
+						this.$data.newsItems = result.data.data
+					})
+					.catch((error) => {
+						console.warn(error, 'newsItem_4.vue');
+					})
 			}
 		}
 	}

@@ -9,15 +9,15 @@
 		</div>
 		<div class="newsDetailShowBox">
 			<div class="newsTtile">
-				<h3>热烈祝贺我院荣获校2020年师德师风先进集体荣誉称号</h3>
+				<h3>{{newsDetailDate.newsTitle}}</h3>
 			</div>
 			<div class="newsMessage">
-				<div class="newsTime"><small>发布时间：2020-12-29</small></div>
-				<div class="newsAuthor"><small>发布人：刘心声</small></div>
-				<div class="newsViews"><small>浏览次数：20</small></div>
+				<div class="newsTime"><small>发布时间：{{newsDetailDate.update_time | dateFormat}}</small></div>
+				<div class="newsAuthor"><small>发布人：{{newsDetailDate.newsAuthor}}</small></div>
+				<div class="newsViews"><small>浏览次数：{{newsDetailDate.newsClicks}}</small></div>
 			</div>
 			<div class="newsText">
-				2020年，全院教职员工深入学习贯彻习近平新时代中国特色社会主义思想，以德修身，教书育人，努力推进学院的改革与发展，涌现出了一批爱岗敬业、关爱学生的师德典范，不断提高思想政治素质和教学科研水平，经学校2020年第16次党委（扩大）会议研究决定，我院被授予校级“师德师风先进集体”荣誉称号；我院王丽红老师被授予校级“师德师风先进个人”荣誉称号。
+				{{newsDetailDate.newsText}}
 			</div>
 		</div>
 		<indexFooter></indexFooter>
@@ -37,7 +37,8 @@
 					to: ''
 				},
 				items: '',
-				newsId: ''
+				newsId: '',
+				newsDetailDate:''
 			}
 		},
 		components: {
@@ -48,6 +49,18 @@
 			this.$data.newsId = this.$route.query.newsId;
 			this.$data.items = JSON.parse(this.$route.query.routerRecord);
 			this.$data.items.push(this.$data.pathObj);
+			this.getNewsDetail(this.$data.newsId)
+		},
+		methods:{
+			getNewsDetail(newsId){
+				this.$api.newsItemApi
+				.getNewsDetailByNewsId(newsId).then((result) => {
+					console.log(result.data.data);
+					this.$data.newsDetailDate = result.data.data[0]
+				}).catch((err) => {
+					console.warn(err)
+				});
+			}
 		}
 	}
 </script>

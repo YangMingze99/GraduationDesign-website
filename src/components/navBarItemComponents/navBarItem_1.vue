@@ -47,7 +47,6 @@
 					.getChildNavItemByParentNavItemClassId(id)
 					.then((result) => {
 						this.$data.itemList = result.data.data;
-						// console.log(_this.$data.itemList[0])
 					})
 					.catch((err) => {
 						console.warn(err, "子项获取失败");
