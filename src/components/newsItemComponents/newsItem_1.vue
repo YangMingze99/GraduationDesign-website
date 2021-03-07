@@ -1,80 +1,15 @@
 <template>
 	<div>
 		<ul class="clearfix ">
-			<li>
+			<li v-for="item  in listItem" :key="item._id">
 				<div class="newItemCon">
-					<span class="newItemDate">02-09</span>
+					<span class="newItemDate">{{new Date(item.update_time).valueOf(),pattern = 'MM-DD'| dateFormat}}</span>
 					<h3 class="newItemTitle">
-						<router-link to="#" target="_blank"><strong>热烈祝贺我院荣获校2020年师德师风先进集体荣誉称号 体荣誉称号体荣誉称号体荣誉称号</strong></router-link>
+						<router-link :to="{path:'/newsDetail',query:{newsId:item._id,routerRecord:JSON.stringify(routerRecord)}}" target="_blank"><strong>{{item.newsTitle}}</strong></router-link>
 					</h3>
 					<div class="newItemTxt">
 						<p>
-							2020年，全院教职员工深入学习贯彻习近平新时代中国特色社会主义思想，以德修身，教书育人，努力推进学院的改革与发展，涌现出了一批爱岗敬业、关爱学生的师德典范，不断提高思想政治素质和教学科研水平，经学校2020年第16次党委（扩大）会议研究决定，我院被授予校级“师德师风先进集体”荣誉称号；我院王丽红老师被授予校级“师德师风先进个人”荣誉称号。
-						</p>
-					</div>
-				</div>
-			</li>
-			<li>
-				<div class="newItemCon">
-					<span class="newItemDate">02-09</span>
-					<h3 class="newItemTitle">
-						<router-link to="#" target="_blank"><strong>热烈祝贺我院荣获校2020年师德师风先进集体荣誉称号 体荣誉称号体荣誉称号体荣誉称号</strong></router-link>
-					</h3>
-					<div class="newItemTxt">
-						<p>
-							2020年，全院教职员工深入学习贯彻习近平新时代中国特色社会主义思想，以德修身，教书育人，努力推进学院的改革与发展，涌现出了一批爱岗敬业、关爱学生的师德典范，不断提高思想政治素质和教学科研水平，经学校2020年第16次党委（扩大）会议研究决定，我院被授予校级“师德师风先进集体”荣誉称号；我院王丽红老师被授予校级“师德师风先进个人”荣誉称号。
-						</p>
-					</div>
-				</div>
-			</li>
-			<li>
-				<div class="newItemCon">
-					<span class="newItemDate">02-09</span>
-					<h3 class="newItemTitle">
-						<router-link to="#" target="_blank"><strong>热烈祝贺我院荣获校2020年师德师风先进集体荣誉称号 体荣誉称号体荣誉称号体荣誉称号</strong></router-link>
-					</h3>
-					<div class="newItemTxt">
-						<p>
-							2020年，全院教职员工深入学习贯彻习近平新时代中国特色社会主义思想，以德修身，教书育人，努力推进学院的改革与发展，涌现出了一批爱岗敬业、关爱学生的师德典范，不断提高思想政治素质和教学科研水平，经学校2020年第16次党委（扩大）会议研究决定，我院被授予校级“师德师风先进集体”荣誉称号；我院王丽红老师被授予校级“师德师风先进个人”荣誉称号。
-						</p>
-					</div>
-				</div>
-			</li>
-			<li>
-				<div class="newItemCon">
-					<span class="newItemDate">02-09</span>
-					<h3 class="newItemTitle">
-						<router-link to="#" target="_blank"><strong>热烈祝贺我院荣获校2020年师德师风先进集体荣誉称号 体荣誉称号体荣誉称号体荣誉称号</strong></router-link>
-					</h3>
-					<div class="newItemTxt">
-						<p>
-							2020年，全院教职员工深入学习贯彻习近平新时代中国特色社会主义思想，以德修身，教书育人，努力推进学院的改革与发展，涌现出了一批爱岗敬业、关爱学生的师德典范，不断提高思想政治素质和教学科研水平，经学校2020年第16次党委（扩大）会议研究决定，我院被授予校级“师德师风先进集体”荣誉称号；我院王丽红老师被授予校级“师德师风先进个人”荣誉称号。
-						</p>
-					</div>
-				</div>
-			</li>
-			<li>
-				<div class="newItemCon">
-					<span class="newItemDate">02-09</span>
-					<h3 class="newItemTitle">
-						<router-link to="#" target="_blank"><strong>热烈祝贺我院荣获校2020年师德师风先进集体荣誉称号 体荣誉称号体荣誉称号体荣誉称号</strong></router-link>
-					</h3>
-					<div class="newItemTxt">
-						<p>
-							2020年，全院教职员工深入学习贯彻习近平新时代中国特色社会主义思想，以德修身，教书育人，努力推进学院的改革与发展，涌现出了一批爱岗敬业、关爱学生的师德典范，不断提高思想政治素质和教学科研水平，经学校2020年第16次党委（扩大）会议研究决定，我院被授予校级“师德师风先进集体”荣誉称号；我院王丽红老师被授予校级“师德师风先进个人”荣誉称号。
-						</p>
-					</div>
-				</div>
-			</li>
-			<li>
-				<div class="newItemCon">
-					<span class="newItemDate">02-09</span>
-					<h3 class="newItemTitle">
-						<router-link to="#" target="_blank"><strong>热烈祝贺我院荣获校2020年师德师风先进集体荣誉称号 体荣誉称号体荣誉称号体荣誉称号</strong></router-link>
-					</h3>
-					<div class="newItemTxt">
-						<p>
-							2020年，全院教职员工深入学习贯彻习近平新时代中国特色社会主义思想，以德修身，教书育人，努力推进学院的改革与发展，涌现出了一批爱岗敬业、关爱学生的师德典范，不断提高思想政治素质和教学科研水平，经学校2020年第16次党委（扩大）会议研究决定，我院被授予校级“师德师风先进集体”荣誉称号；我院王丽红老师被授予校级“师德师风先进个人”荣誉称号。
+							{{item.newsText}}
 						</p>
 					</div>
 				</div>
@@ -84,7 +19,41 @@
 </template>
 <script>
 	export default {
-		name: 'newsItem_1'
+		name: 'newsItem_1',
+		data(){
+			return {
+				listItem:{},
+				routerRecord:[{
+					text: '首页',
+					to: '/',
+				}]
+			}
+		},
+		props:{
+			currentClass:String,
+		},
+		created(){
+			this.getItem(5)
+		},
+		watch:{
+			"currentClass" : function(){
+				if(this.$props.currentClass === 'collageactives'){
+					this.getItem(5);
+				}else{
+					this.getItem(4);
+				}
+			}
+		},
+		methods:{
+			getItem(id){
+				this.$api.newsItemApi
+				.getNewsItemByChildId(id).then((result) => {
+					this.$data.listItem = result.data.data.splice(0,6);
+				}).catch((err) => {
+					console.warn(err,'newsItem1.vue')
+				});
+			}
+		}
 	}
 </script>
 <style lang="less" scoped>

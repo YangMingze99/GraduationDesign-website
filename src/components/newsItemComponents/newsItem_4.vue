@@ -9,7 +9,7 @@
 					<router-link :to="{path:'/newsDetail',query:{newsId:item._id,routerRecord:JSON.stringify(routerRecord)}}" target="_blank">{{item.newsTitle}}</router-link>
 				</div>
 				<div class="col-md-2 col-xs-3 newsDate">
-					{{new Date(item.update_time).valueOf() ,pattern = 'YYYY-DD-MM'| dateFormat}}
+					{{new Date(item.update_time).valueOf(),pattern = 'YYYY-DD-MM'| dateFormat}}
 				</div>
 			</div>
 		</div>

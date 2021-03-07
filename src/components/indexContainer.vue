@@ -10,10 +10,10 @@
 			</div>
 			<div class="containerBox_top_articleList ">
 				<article class="containerBox_top_articleListOne animate__animated" :class="{'isShow':articleBarIsSelected.articleBarTwo ,'animate__fadeInLeft':articleBarIsSelected.articleBarOne ,'animate__fadeOutLeft':articleBarIsSelected.articleBarTwo}">
-					<newsItemOne></newsItemOne>
+					<newsItemOne :currentClass="dateClass"></newsItemOne>
 				</article>
 				<article class="containerBox_top_articleListTwo animate__animated" :class="{'isShow':articleBarIsSelected.articleBarOne ,'animate__fadeInRight':articleBarIsSelected.articleBarTwo ,'animate__fadeOutRight':articleBarIsSelected.articleBarOne}">
-					<newsItemOne></newsItemOne>
+					<newsItemOne :currentClass="dateClass"></newsItemOne>
 				</article>
 			</div>
 			<div class="containerBox_top_moreBtn">
@@ -97,12 +97,13 @@
 		},
 		data() {
 			return {
+				dateClass:'collageactives',
 				scroll: "",
 				articleBarIsSelected: {
 					articleBarOne: true,
 					articleBarTwo: false,
 				},
-				moreBtnUrl: 'collage',
+				moreBtnUrl: 'collage/collageactives',
 				dataCountDownFlag: false,
 				screenWidth: '',
 				screenHeight: '',
@@ -135,28 +136,23 @@
 			handleSelectBarOne(e) {
 				this.$data.articleBarIsSelected.articleBarOne = true;
 				this.$data.articleBarIsSelected.articleBarTwo = false;
+				this.$data.dateClass = 'collageactives'
 				this.$data.moreBtnUrl = '/collage/collageactives';
 			},
 			handleSelectBarTwo(e) {
 				this.$data.articleBarIsSelected.articleBarOne = false;
 				this.$data.articleBarIsSelected.articleBarTwo = true;
+				this.$data.dateClass = 'collageNotice'
 				this.$data.moreBtnUrl = '/collage/collageNotice';
 			},
 			startCountdown(that) {
 				for (let refsItem in that.$refs) {
 					that.$refs[refsItem].start()
 				}
-				// that.$refs.countdown_1.start();
-				// that.$refs.countdown_2.start();
-				// that.$refs.countdown_3.start();
-				// that.$refs.countdown_4.start();
-				// that.$refs.countdown_5.start();
-				// that.$refs.countdown_6.start();
 			}
 		},
 		mounted() {
 			window.addEventListener("scroll", this.scrollListener);
-			
 			this.screenWidth = document.body.clientWidth;
 			this.screenHeight = document.body.clientHeight;
 			window.onresize = () => {
