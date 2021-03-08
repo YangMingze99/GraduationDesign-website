@@ -2,52 +2,15 @@
 	<div class="swiperbox" @mouseenter="handleSwiperMouseEnter" @mouseleave="handleSwiperMouseLeave">
 		<div class="swiper-container">
 			<div class="swiper-wrapper">
-				<div class="swiper-slide">
-					<router-link to="/index">
-						<img src="@/assets/images/1.png" alt="">
+				<div class="swiper-slide" v-for="item in listItem" :key="item._id">
+					<router-link :to="{path: '/newsDetail',query: {
+						newsId: item._id,
+						routerRecord: JSON.stringify(routerRecord),
+					},}">
+						<img :src="baseUrl + item.newsPictures" alt="" />
 						<b-card tag="article" class="cards">
 							<b-card-text>
-								这是一段测试标题
-							</b-card-text>
-						</b-card>
-					</router-link>
-				</div>
-				<div class="swiper-slide">
-					<router-link to="/index">
-						<img src="@/assets/images/2.png" alt="">
-						<b-card tag="article" class="cards">
-							<b-card-text>
-								这是一段测试标题
-							</b-card-text>
-						</b-card>
-					</router-link>
-				</div>
-				<div class="swiper-slide">
-					<router-link to="/index">
-						<img src="@/assets/images/3.png" alt="">
-						<b-card tag="article" class="cards">
-							<b-card-text>
-								这是一段测试标题
-							</b-card-text>
-						</b-card>
-					</router-link>
-				</div>
-				<div class="swiper-slide">
-					<router-link to="/index">
-						<img src="@/assets/images/4.png" alt="">
-						<b-card tag="article" class="cards">
-							<b-card-text>
-								这是一段测试标题hhhhhhh
-							</b-card-text>
-						</b-card>
-					</router-link>
-				</div>
-				<div class="swiper-slide">
-					<router-link to="/index">
-						<img src="@/assets/images/5.png" alt="">
-						<b-card tag="article" class="cards">
-							<b-card-text>
-								这是一段测试标题
+								{{ item.newsTitle }}
 							</b-card-text>
 						</b-card>
 					</router-link>
@@ -58,61 +21,79 @@
 			<div class="swiper-button-prev" :class="display"></div>
 		</div>
 	</div>
-
 </template>
 <script>
 	// Import Swiper Vue.js components
-	import Swiper from 'swiper/js/swiper.js';
+	import Swiper from "swiper/js/swiper.js";
+	import axios from "@/utils/axios.config.js";
 	// Import Swiper styles
 	export default {
 		data() {
 			return {
-				display: "hide"
-			}
+				display: "hide",
+				listItem: {},
+				baseUrl: axios.defaults.baseURL,
+				routerRecord: [{
+					text: "首页",
+					to: "/",
+				}, ],
+				parentId:'',
+				childrenId:''
+			};
 		},
-		components: {
-
-		},
+		components: {},
+		created() {},
 		methods: {
 			handleSwiperMouseEnter(e) {
-				this.$data.display = "show"
+				this.$data.display = "show";
 			},
 			handleSwiperMouseLeave(e) {
-				this.$data.display = "hide"
-			}
+				this.$data.display = "hide";
+			},
+			getNewItem() {
+				this.$api.newsItemApi
+					.getSwiperNewsItem()
+					.then((result) => {
+						this.$data.listItem = result.data.data;
+						//放到下个执行栈中  渲染完之后swiper才能操作dom   3/8
+						this.$nextTick(() => {
+							new Swiper(".swiper-container", {
+								preventClicks: true,
+								loop: true,
+								pagination: {
+									el: ".swiper-pagination",
+									clickable: true,
+								},
+								navigation: {
+									nextEl: ".swiper-button-next",
+									prevEl: ".swiper-button-prev",
+								},
+								speed: 1000,
+								effect: "fade",
+								loop: true,
+								autoplay: {
+									delay: 1500,
+									stopOnLastSlide: false,
+									disableOnInteraction: false,
+								},
+								observer: true,
+								observeParents: true,
+								onSlideChangeEnd: function(swiper) {
+									swiper.update();
+									MySwiper.startAutoplay();
+									MySwiper.reLoop();
+								},
+							});
+						});
+					})
+					.catch((err) => {
+						console.warn(err, "indexMainSwiper.vue");
+					});
+			},
 		},
 		mounted() {
-			new Swiper('.swiper-container', {
-				// slidesPerView: 1.5,
-				// centeredSlides: true,
-
-				// slidesOffsetBefore:'5rem',
-				// spaceBetween: 0,
-				preventClicks: true, //默认true
-				loop: true,
-				// 如果需要分页器
-				pagination: {
-					el: '.swiper-pagination',
-					clickable: true,
-
-				},
-				// 如果需要前进后退按钮
-				navigation: {
-					nextEl: '.swiper-button-next',
-					prevEl: '.swiper-button-prev',
-				},
-				speed: 800,
-				effect: 'fade',
-				autoplay: {
-					delay: 3000,
-					stopOnLastSlide: false,
-					disableOnInteraction: false,
-				},
-				// slidesgrid: {
-				// 	slidesOffsetBefore: 50 + 'px'
-				// }
-			})
-		}
+			this.getNewItem();
+		},
 	};
 </script>
 <style lang="less" scoped="scoped">
@@ -134,8 +115,8 @@
 		margin-top: 1px;
 		overflow: hidden;
 		position: relative;
-		.swiper-wrapper {
 
+		.swiper-wrapper {
 			.swiper-slide {
 				display: flex;
 				justify-content: center;
@@ -146,7 +127,7 @@
 				}
 
 				.cards {
-					background-color: rgba(0, 0, 0, .7);
+					background-color: rgba(0, 0, 0, 0.7);
 					position: absolute;
 					bottom: 0;
 					left: 5%;
@@ -181,33 +162,33 @@
 			padding-left: 80%;
 		}
 	}
+
 	//ipad 横屏
-	@media only screen and (min-width : 768px) and (max-width : 1024px) and (orientation : landscape) {
+	@media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
 		.swiper-container {
 			height: 20rem !important;
 		}
-		
+
 		.swiper-slide img {
 			height: 100%;
 		}
-		
 	}
-	
+
 	//ipad 竖屏
-	@media only screen and (min-width : 768px) and (max-width : 1024px) and (orientation : portrait) {
+	@media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
 		.swiper-container {
 			height: 20rem !important;
 		}
-		
+
 		.swiper-slide img {
 			height: 100%;
 		}
-		
+
 		.swiper-button-prev,
 		.swiper-button-next {
 			display: none;
 		}
-		
+
 		.swiper-wrapper {
 			.swiper-slide {
 				.cards {
@@ -234,12 +215,18 @@
 				}
 			}
 		}
+
 		.swiper-button-prev,
 		.swiper-button-next {
 			display: none;
 		}
+
 		.swiper-pagination {
 			padding-left: 75% !important;
+		}
+		
+		.card-text{
+			font-size: 10px !important;
 		}
 	}
 </style>

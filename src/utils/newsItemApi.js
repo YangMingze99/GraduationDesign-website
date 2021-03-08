@@ -20,6 +20,9 @@ const newsItem = {
                 newsId:newsId
             }
         })
+    },
+    getSwiperNewsItem(){
+        return axios.get('/newsItem/getSwiperBannerNews')
     }
 }
 

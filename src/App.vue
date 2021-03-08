@@ -13,7 +13,7 @@
 						this.$store.commit('setCurrentParentId', result.data.data[0].classId);
 					})
 					.catch((err) => {
-						console.warn(err, "id获取失败");
+						// console.warn(err, "id获取失败");
 					});
 			}
 		},

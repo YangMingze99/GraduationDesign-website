@@ -121,7 +121,7 @@ import axios from '@/utils/axios.config.js'
 	}
 
 	.card-img{
-		height: 100%;
+		height: 143px;
 		width:100% ;
 	}
 
