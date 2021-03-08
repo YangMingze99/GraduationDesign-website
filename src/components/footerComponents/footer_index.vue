@@ -40,7 +40,7 @@
 		width: 100%;
 		height: 12rem;
 		background-color: white;
-		border-top: 1px dotted black;
+		border-top: 1px solid rgb(214, 213, 213);
 		position: relative;
 
 		.leftFooter {

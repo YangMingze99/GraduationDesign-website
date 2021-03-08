@@ -26,7 +26,6 @@
 
 <style lang="less" scoped>
 	.showBox{
-		height: 29.375rem;
 		h3{
 			font-weight: 550;
 		}

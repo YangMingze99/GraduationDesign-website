@@ -1,116 +1,19 @@
 <template>
 	<div>
 		<ul class="clearfix">
-			<li>
+			<li v-for="item in listItem" :key="item._id">
 				<div class="card newsItemBox ">
 					<div class="row no-gutters">
 						<div class="col-md-4 col-sm-4 col-xs-4">
-							<img src="@/assets/images/1.png" class="card-img">
+							<img :src="baseUrl+item.newsPictures" class="card-img">
 						</div>
 						<div class="col-md-8 col-sm-8 col-xs-8">
 							<div class="card-body">
 								<h6 class="card-title">
-									<router-link to="#">计算机与信息工程学院——身边的榜样（六）</router-link>
+									<router-link :to="{path:'/newsDetail',query:{newsId:item._id,routerRecord:JSON.stringify(routerRecord)}}">{{item.newsTitle}}</router-link>
 								</h6>
-								<p class="card-text newsCon">#######This is a wider card with supporting text below as a natural lead-in to
-									additional content. This content is a little bit longer.</p>
-								<p class="card-text text-right"><small class="text-muted">2021/2/9</small></p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</li>
-
-			<li>
-				<div class="card newsItemBox">
-					<div class="row no-gutters">
-						<div class="col-md-4 col-sm-4 col-xs-4">
-							<img src="@/assets/images/1.png" class="card-img">
-						</div>
-						<div class="col-md-8 col-sm-8 col-xs-8">
-							<div class="card-body">
-								<h6 class="card-title">
-									<router-link to="#">计算机与信息工程学院——身边的榜样（六）</router-link>
-								</h6>
-								<p class="card-text newsCon">#######This is a wider card with supporting text below as a natural lead-in to
-									additional content. This content is a little bit longer.</p>
-								<p class="card-text text-right"><small class="text-muted">2021/2/9</small></p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</li>
-			<li>
-				<div class="card newsItemBox">
-					<div class="row no-gutters">
-						<div class="col-md-4 col-sm-4 col-xs-4">
-							<img src="@/assets/images/1.png" class="card-img">
-						</div>
-						<div class="col-md-8 col-sm-8 col-xs-8">
-							<div class="card-body">
-								<h6 class="card-title">
-									<router-link to="#">计算机与信息工程学院——身边的榜样（六）</router-link>
-								</h6>
-								<p class="card-text newsCon">#######This is a wider card with supporting text below as a natural lead-in to
-									additional content. This content is a little bit longer.</p>
-								<p class="card-text text-right"><small class="text-muted">2021/2/9</small></p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</li>
-			<li>
-				<div class="card newsItemBox">
-					<div class="row no-gutters">
-						<div class="col-md-4 col-sm-4 col-xs-4">
-							<img src="@/assets/images/1.png" class="card-img">
-						</div>
-						<div class="col-md-8 col-sm-8 col-xs-8">
-							<div class="card-body">
-								<h6 class="card-title">
-									<router-link to="#">计算机与信息工程学院——身边的榜样（六）</router-link>
-								</h6>
-								<p class="card-text newsCon">#######This is a wider card with supporting text below as a natural lead-in to
-									additional content. This content is a little bit longer.</p>
-								<p class="card-text text-right"><small class="text-muted">2021/2/9</small></p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</li>
-			<li>
-				<div class="card newsItemBox">
-					<div class="row no-gutters">
-						<div class="col-md-4 col-sm-4 col-xs-4">
-							<img src="@/assets/images/4.png" class="card-img">
-						</div>
-						<div class="col-md-8 col-sm-8 col-xs-8">
-							<div class="card-body">
-								<h6 class="card-title">
-									<router-link to="#">计算机与信息工程学院——身边的榜样（六）</router-link>
-								</h6>
-								<p class="card-text newsCon">#######This is a wider card with supporting text below as a natural lead-in to
-									additional content. This content is a little bit longer.</p>
-								<p class="card-text text-right"><small class="text-muted">2021/2/9</small></p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</li>
-			<li>
-				<div class="card newsItemBox">
-					<div class="row no-gutters">
-						<div class="col-md-4 col-sm-4 col-xs-4">
-							<img src="@/assets/images/1.png" class="card-img">
-						</div>
-						<div class="col-md-8 col-sm-8 col-xs-8">
-							<div class="card-body">
-								<h6 class="card-title">
-									<router-link to="#">计算机与信息工程学院——身边的榜样（六）</router-link>
-								</h6>
-								<p class="card-text newsCon">#######This is a wider card with supporting text below as a natural lead-in to
-									additional content. This content is a little bit longer.</p>
-								<p class="card-text text-right"><small class="text-muted">2021/2/9</small></p>
+								<p class="card-text newsCon"><small>{{item.newsText}}</small></p>
+								<p class="card-text text-right"><small class="text-muted">{{new Date(item.update_time).valueOf(),pattern = 'YYYY/MM/DD'| dateFormat}}</small></p>
 							</div>
 						</div>
 					</div>
@@ -121,8 +24,41 @@
 </template>
 
 <script>
+import axios from '@/utils/axios.config.js'
 	export default {
 		name: 'newsItem2',
+		data(){
+			return {
+				listItem:{},
+				routerRecord:[
+					{
+						text: '首页',
+						to: '/',
+					},
+					{
+						text:"学团工作",
+						to:"/leagueWork"
+					}
+				],
+				baseUrl:axios.defaults.baseURL
+			}
+		},
+		props:{
+
+		},
+		created(){
+			this.getItem(33);
+		},
+		methods:{
+			getItem(id){
+				this.$api.newsItemApi
+				.getNewsItemByParentId(id).then((result) => {
+					this.$data.listItem = result.data.data.splice(0,6);
+				}).catch((err) => {
+					console.warn(err,'newsItem2.vue')
+				});
+			}
+		}
 	}
 </script>
 
@@ -139,20 +75,15 @@
 		*zoom: 1;
 	}
 
-	img {
-		height: 100%;
-	}
-
 	ul {
 		position: relative;
 		left: 6%;
 		list-style: none;
 		width: 90%;
-
+		display: flex;
+		flex-wrap: wrap;
 		li {
-			float: left;
 			padding: 1rem;
-
 			.newsItemBox,
 			.card-body {
 				max-width: 39rem;
@@ -189,7 +120,13 @@
 		}
 	}
 
-	.newsCon {
+	.card-img{
+		height: 100%;
+		width:100% ;
+	}
+
+	.newsCon small{
+		text-decoration: 2rem;
 		line-height: 1.3rem;
 		margin-bottom: -0.5rem;
 		overflow: hidden;
@@ -270,9 +207,8 @@
 	@media screen and (max-width: 767px) {
 		ul {
 			left: 5% !important;
-
+			
 			li {
-
 				.newsItemBox,
 				.card-body {
 					max-height: 23rem !important;

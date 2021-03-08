@@ -94,7 +94,7 @@
 		ul {
 			list-style: none;
 			margin-top: 18px;
-
+			
 			li {
 				margin-bottom: 10px;
 				height: 50px;

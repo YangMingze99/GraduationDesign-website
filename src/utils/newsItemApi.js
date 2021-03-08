@@ -7,6 +7,13 @@ const newsItem = {
             }
         })
     },
+    getNewsItemByParentId(currentParentId){
+        return axios.get('/newsItem/getNewsItemByParentId',{
+            params:{
+                parentId:currentParentId
+            }
+        })
+    },
     getNewsDetailByNewsId(newsId){
         return axios.get('/newsItem/getNewsDetail',{
             params:{

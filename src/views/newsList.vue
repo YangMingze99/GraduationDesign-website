@@ -1,14 +1,14 @@
 <template>
-	<div>
+	<div id="index">
 		<headerNavBar></headerNavBar>
-		<div class="newsListBanner"></div>
+		<div class="newsListBanner" id="newsListBanner"></div>
 		<div class="newsListShowBox">
 			<div class="breadcrumbBox">
 				<span class="breadcrumbTitle">当前位置：<b-icon style="color: #0056b3;" icon="house-fill" scale="1.2" shift-v="1.25"
 					 aria-hidden="true"></b-icon></span>
 				<b-breadcrumb :items="items"></b-breadcrumb>
 			</div>
-			<div class="newsList clearfix">
+			<div class="newsList clearfix" id="newsList">
 				<div class="newsList_left clearfix">
 					<navBarItem :currentClassify="items[1]" :currentItem="items[items.length-1]"></navBarItem>
 				</div>
@@ -91,10 +91,10 @@
 	
 	.newsListBanner {
 		margin-top: 5rem;
-		width: 100%;
+		width: 100vw;
 		height: 170px;
 		background: url(../assets/images/listbanner.jpg) no-repeat;
-		background-position: 0 -6.125rem;
+		background-size:100% 100%;
 	}
 
 	.newsListShowBox {
@@ -120,12 +120,6 @@
 					text-decoration: none;
 				}
 
-				li {
-					a{
-						
-					}
-				}
-
 				li:nth-last-child(1) {
 					cursor: default;
 				}
@@ -135,23 +129,16 @@
 		.newsList {
 			position: relative;
 			margin-top: 25px;
-			
 			margin-bottom: 150px;
-
+			display: flex;
+			justify-content: space-around;
 			.newsList_left {
-				float: left;
 				margin-left: 50px;
-				
 			}
-
 			.newsList_right {
-				width: 70%;
-				float: right;
-				position: relative;
-				// border: 1px solid red;
-				margin-right: 4.375rem;
+				width: 100%;
+				margin-left: 50px;
 				margin-top: 3.125rem;
-				padding: 10px;
 			}
 		}
 	}
@@ -169,5 +156,24 @@
 	@media only screen and (min-width : 768px) and (max-width : 1024px) and (orientation : portrait) {}
 
 	//手机端
-	@media screen and (max-width: 767px) {}
+	@media screen and (max-width: 767px) {
+		#index{
+			overflow: hidden;
+		}
+		#newsListBanner{
+			height: 7.5rem;
+		}
+		#newsList{
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			.newsList_left{
+				margin: 10px 25px;
+			}
+			.newsList_right{
+				box-sizing: border-box;
+				margin: 0 auto;
+			}
+		}
+	}
 </style>

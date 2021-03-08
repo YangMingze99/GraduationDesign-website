@@ -1,15 +1,15 @@
 <template>
 	<div>
 		<div class="container-fluid newsLists" id="newsList" >
-			<div class="row newsItem" v-for="item in handleNewsItem" :key="item._id">
-				<div class="col-md-10 col-xs-9 newsTitle">
+			<div class="row newsItem" id="newsItem" v-for="item in handleNewsItem" :key="item._id">
+				<div class="col-md-10 col-xs-9 newsTitle" id="newsTitle">
 					<div class="newsIcon">
 						<b-icon icon="triangle-fill"></b-icon>
 					</div>
 					<router-link :to="{path:'/newsDetail',query:{newsId:item._id,routerRecord:JSON.stringify(routerRecord)}}" target="_blank">{{item.newsTitle}}</router-link>
 				</div>
 				<div class="col-md-2 col-xs-3 newsDate">
-					{{new Date(item.update_time).valueOf(),pattern = 'YYYY-DD-MM'| dateFormat}}
+					{{new Date(item.update_time).valueOf(),pattern = 'YYYY/MM/DD'| dateFormat}}
 				</div>
 			</div>
 		</div>
@@ -138,6 +138,37 @@
 			transition: all 0.6s;
 			box-shadow: 0 0 20px #a1a1a1;
 			-webkit-box-shadow: 0 0 20px #a1a1a1;
+		}
+	}
+
+
+	//ipad 竖屏（pro）
+	@media only screen and (min-width : 1024px) and (max-width: 1366px) and (orientation : portrait) {}
+
+	//ipad 横屏（pro）
+	@media only screen and (min-width : 1024px) and (max-width: 1366px) and (orientation : landscape) {}
+
+	//ipad 横屏
+	@media only screen and (min-width : 768px) and (max-width : 1024px) and (orientation : landscape) {}
+
+	//ipad 竖屏
+	@media only screen and (min-width : 768px) and (max-width : 1024px) and (orientation : portrait) {}
+
+	//手机
+	@media screen and (max-width: 767px) {
+		#newsItem{
+			width: 100%;
+			flex-wrap: nowrap;
+			margin-left: 0 ;
+		}
+		#newsTitle{
+			white-space: nowrap;
+    		overflow: hidden;
+    		text-overflow: ellipsis;
+			flex: 0 0 70%;
+			a{
+				width: 100%;
+			}
 		}
 	}
 </style>

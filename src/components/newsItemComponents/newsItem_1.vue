@@ -5,7 +5,7 @@
 				<div class="newItemCon">
 					<span class="newItemDate">{{new Date(item.update_time).valueOf(),pattern = 'MM-DD'| dateFormat}}</span>
 					<h3 class="newItemTitle">
-						<router-link :to="{path:'/newsDetail',query:{newsId:item._id,routerRecord:JSON.stringify(routerRecord)}}" target="_blank"><strong>{{item.newsTitle}}</strong></router-link>
+						<router-link :to="{path:'/newsDetail',query:{newsId:item._id,routerRecord:currentClass=='collageactives'?JSON.stringify(routerRecord[0]):JSON.stringify(routerRecord[1])}}" target="_blank"><strong>{{item.newsTitle}}</strong></router-link>
 					</h3>
 					<div class="newItemTxt">
 						<p>
@@ -23,10 +23,32 @@
 		data(){
 			return {
 				listItem:{},
-				routerRecord:[{
-					text: '首页',
-					to: '/',
-				}]
+				routerRecord:[
+					[{
+						text: '首页',
+						to: '/',
+					},
+					{
+						text:"学院概况",
+						to:"/collage"
+					},
+					{
+						text:"学院动态",
+						to:"/collage/collageactives"
+					}],
+					[{
+						text: '首页',
+						to: '/',
+					},
+					{
+						text:"学院概况",
+						to:"/collage"
+					},
+					{
+						text:"通知公告",
+						to:"/collage/collageNotice"
+					}]
+				]
 			}
 		},
 		props:{

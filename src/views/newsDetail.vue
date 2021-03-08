@@ -1,22 +1,22 @@
 <template>
 	<div>
 		<headerNavBar></headerNavBar>
-		<div class="newsListBanner"></div>
-		<div class="breadcrumbBox">
+		<div class="newsListBanner" id="newsListBanner"></div>
+		<div class="breadcrumbBox" id="breadcrumbBox">
 			<span class="breadcrumbTitle">
 				当前位置：<b-icon style="color: #0056b3;" icon="house-fill" scale="1.2" shift-v="1.25" aria-hidden="true"></b-icon></span>
 			<b-breadcrumb :items="items"></b-breadcrumb>
 		</div>
 		<div class="newsDetailShowBox">
-			<div class="newsTtile">
+			<div class="newsTtile" id="newsTtile">
 				<h3>{{newsDetailDate.newsTitle}}</h3>
 			</div>
-			<div class="newsMessage">
-				<div class="newsTime"><small>发布时间：{{newsDetailDate.update_time | dateFormat}}</small></div>
+			<div class="newsMessage" id="newsMessage">
+				<div class="newsTime"><small>发布时间：{{newsDetailDate.update_time,pattern = 'YYYY-MM-DD HH:MM:SS' | dateFormat}}</small></div>
 				<div class="newsAuthor"><small>发布人：{{newsDetailDate.newsAuthor}}</small></div>
 				<div class="newsViews"><small>浏览次数：{{newsDetailDate.newsClicks}}</small></div>
 			</div>
-			<div class="newsText">
+			<div class="newsText" id="newsText">
 				{{newsDetailDate.newsText}}
 			</div>
 		</div>
@@ -136,6 +136,40 @@
 			text-indent: 2rem;
 			line-height: 2.5rem;
 			color: #727171 ;
+		}
+	}
+
+
+
+	// 手机端适配
+	@media screen and (max-width: 767px) and (orientation : portrait){
+		#newsListBanner{
+			height: 6.25rem;
+		}
+		#breadcrumbBox{
+			font-size: 0.8125rem;
+			ol{
+				margin-left: -0.9375rem;
+			}
+		}
+		
+		#newsTtile{
+			h3{
+				font-size: 1.125rem
+			}
+		}
+		
+		#newsMessage{
+			font-size: 0.75rem;
+			padding-bottom: 0.3125rem;
+			display: flex;
+			justify-content: space-between;
+		}
+		
+		#newsText{
+			padding: 0.3125rem;
+			text-indent: 2rem;
+			line-height: 2rem;
 		}
 	}
 </style>

@@ -1,6 +1,6 @@
 <template>
 	<!-- 我是containerBox我是containerBox我是containerBox我是containerBox   -->
-	<div class="containerBox clearfix">
+	<div class="containerBox clearfix" id="containerBox">
 		<div class="containerBox_top animate__animated animate__fadeInLeft">
 			<div class="containerBox_top_articleBar ">
 				<ul>
@@ -198,7 +198,7 @@
 		width: 100%;
 		background-color: rgb(245, 245, 245);
 		position: relative;
-		margin-bottom: 6.25rem;
+		// margin-bottom: 6.25rem;
 
 		//上部分
 		.containerBox_top {
@@ -362,7 +362,6 @@
 
 				.data {
 					font-size: 75px;
-
 					.suffix,
 					p {
 						font-weight: 500;
@@ -370,6 +369,7 @@
 					}
 
 				}
+				
 			}
 		}
 	}
@@ -409,6 +409,9 @@
 
 	// 手机端适配
 	@media screen and (max-width: 767px) {
+		#containerBox{
+			overflow: hidden;
+		}
 		.articleBarSelected::after {
 			width: 4.3rem !important;
 			height: 2px;
@@ -440,7 +443,7 @@
 		}
 		
 		.containerBox_bot{
-			
+			min-height: 20rem  !important;
 			.containerBox_bot_showData{
 				position: relative;
 				left: 4%;
