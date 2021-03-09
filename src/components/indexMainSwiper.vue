@@ -2,10 +2,10 @@
 	<div class="swiperbox" @mouseenter="handleSwiperMouseEnter" @mouseleave="handleSwiperMouseLeave">
 		<div class="swiper-container">
 			<div class="swiper-wrapper">
-				<div class="swiper-slide" v-for="item in listItem" :key="item._id">
+				<div class="swiper-slide" v-for="item,index in listItem" :key="item._id">
 					<router-link :to="{path: '/newsDetail',query: {
 						newsId: item._id,
-						routerRecord: JSON.stringify(routerRecord),
+						routerRecord: JSON.stringify(routerRecord[index]),
 					},}">
 						<img :src="baseUrl + item.newsPictures" alt="" />
 						<b-card tag="article" class="cards">
@@ -33,16 +33,13 @@
 				display: "hide",
 				listItem: {},
 				baseUrl: axios.defaults.baseURL,
-				routerRecord: [{
-					text: "首页",
-					to: "/",
-				}, ],
-				parentId:'',
-				childrenId:''
+				routerRecord: []
 			};
 		},
 		components: {},
-		created() {},
+		created() {
+
+		},
 		methods: {
 			handleSwiperMouseEnter(e) {
 				this.$data.display = "show";
@@ -55,7 +52,31 @@
 					.getSwiperNewsItem()
 					.then((result) => {
 						this.$data.listItem = result.data.data;
-						//放到下个执行栈中  渲染完之后swiper才能操作dom   3/8
+						for (const element of this.$data.listItem) {
+							let path = [{
+								text: "首页",
+								to: "/",
+							}];
+							let newPath = {};
+							let newPath2 = {}
+							this.$api.navItemApi.getUrlMessageByClassId(element.parentId)
+							.then(result=>{
+								newPath.text = result.data.data[0].itemName;
+								newPath.to = result.data.data[0].itemUrl;
+								path.push(newPath);
+
+								this.$api.navItemApi.getUrlMessageByClassId(element.childrenId)
+								.then(result_c=>{
+									newPath2.text = result_c.data.data[0].itemName;
+									newPath2.to = result.data.data[0].itemUrl+result_c.data.data[0].itemUrl;
+									path.push(newPath2)
+								}).catch(error=>{return error}) ;
+							}).catch(error=>{return error}) ;
+							
+							this.$data.routerRecord.push(path);
+						}
+
+						//放到下个执行栈中  渲染完之后swiper才能操作dom   2021/3/8
 						this.$nextTick(() => {
 							new Swiper(".swiper-container", {
 								preventClicks: true,

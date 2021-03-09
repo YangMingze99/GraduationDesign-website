@@ -4,7 +4,7 @@
 			<li v-for="item in listItem" :key="item._id">
 				<div class="card newsItemBox ">
 					<div class="row no-gutters">
-						<div class="col-md-4 col-sm-4 col-xs-4">
+						<div class="col-md-4 col-sm-4 col-xs-4 imgbox">
 							<img :src="baseUrl+item.newsPictures" class="card-img">
 						</div>
 						<div class="col-md-8 col-sm-8 col-xs-8">
@@ -99,7 +99,7 @@ import axios from '@/utils/axios.config.js'
 			transform: translate3d(0, -2px, 0);
 		}
 	}
-
+	
 	.card-title {
 		a {
 			text-decoration: none;
@@ -166,6 +166,7 @@ import axios from '@/utils/axios.config.js'
 				}
 			}
 		}
+
 	}
 
 	//ipad  横
@@ -181,7 +182,10 @@ import axios from '@/utils/axios.config.js'
 				}
 			}
 		}
-
+		.card-img{
+			height: 100%;
+			width:100% ;
+		}
 	}
 
 	//ipad 竖
@@ -189,7 +193,6 @@ import axios from '@/utils/axios.config.js'
 		ul {
 			left: 6.2%;
 		}
-
 		.newsItemBox,
 		.card-body {
 			max-width: 42rem !important;

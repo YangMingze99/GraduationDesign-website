@@ -25,6 +25,13 @@ const navItem = {
                 name: name
             }
         })
+    },
+    getUrlMessageByClassId(classId){
+        return axios.get('/navItem/getUrlMessageByClassId', {
+            params: {
+                classId: classId
+            }
+        })
     }
 
 }
