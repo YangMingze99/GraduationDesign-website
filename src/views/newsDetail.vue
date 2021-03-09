@@ -12,7 +12,7 @@
 				<h3>{{newsDetailDate.newsTitle}}</h3>
 			</div>
 			<div class="newsMessage" id="newsMessage">
-				<div class="newsTime"><small>发布时间：{{newsDetailDate.update_time,pattern = 'YYYY-MM-DD HH:MM:SS' | dateFormat}}</small></div>
+				<div class="newsTime"><small>发布时间：{{newsDetailDate.update_time | dateFormat}}</small></div>
 				<div class="newsAuthor"><small>发布人：{{newsDetailDate.newsAuthor}}</small></div>
 				<div class="newsViews"><small>浏览次数：{{newsDetailDate.newsClicks}}</small></div>
 			</div>

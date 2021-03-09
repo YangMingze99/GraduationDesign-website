@@ -14,7 +14,7 @@ import moment from 'moment'
 
 Vue.use(BootstrapVue);
 Vue.use(BootstrapVueIcons);
-Vue.filter('dateFormat',(dateStr,pattern = 'YYYY-DD-MM HH:mm:ss')=>{
+Vue.filter('dateFormat',(dateStr,pattern = 'YYYY-MM-DD HH:mm:ss')=>{
    return moment(dateStr).format(pattern)
 })
 Vue.config.productionTip = false;

@@ -3,7 +3,7 @@
 		<ul class="clearfix ">
 			<li v-for="item  in listItem" :key="item._id">
 				<div class="newItemCon">
-					<span class="newItemDate">{{new Date(item.update_time).valueOf(),pattern = 'MM-DD'| dateFormat}}</span>
+					<span class="newItemDate">{{new Date(item.update_time).valueOf()| dateFormat(pattern = 'MM-DD')}}</span>
 					<h3 class="newItemTitle">
 						<router-link :to="{path:'/newsDetail',query:{newsId:item._id,routerRecord:currentClass=='collageactives'?JSON.stringify(routerRecord[0]):JSON.stringify(routerRecord[1])}}" target="_blank"><strong>{{item.newsTitle}}</strong></router-link>
 					</h3>

@@ -13,7 +13,7 @@
 									<router-link :to="{path:'/newsDetail',query:{newsId:item._id,routerRecord:JSON.stringify(routerRecord)}}">{{item.newsTitle}}</router-link>
 								</h6>
 								<p class="card-text newsCon"><small>{{item.newsText}}</small></p>
-								<p class="card-text text-right"><small class="text-muted">{{new Date(item.update_time).valueOf(),pattern = 'YYYY/MM/DD'| dateFormat}}</small></p>
+								<p class="card-text text-right"><small class="text-muted">{{new Date(item.update_time).valueOf() | dateFormat(pattern = 'YYYY/MM/DD')}}</small></p>
 							</div>
 						</div>
 					</div>
