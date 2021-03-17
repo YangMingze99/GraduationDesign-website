@@ -385,7 +385,21 @@
 
 	//ipad 横屏
 	@media only screen and (min-width : 768px) and (max-width : 1024px) and (orientation : landscape) {
-		
+		.containerBox_bot_showData{
+				justify-content: center !important;
+			.data {
+				width: 9rem;
+				font-size: 39px !important;
+				.suffix,
+					p {
+						font-weight: 500;
+						font-size: 15px !important;
+					}
+			}
+			.data:last-child{
+				margin-left: 30px  !important;
+			}
+		}
 	}
 
 	//ipad 竖屏
@@ -403,6 +417,23 @@
 						font-size: 1.3rem !important;
 					}
 				}
+			}
+		}
+		.containerBox_bot_showData{
+			justify-content: center !important;
+			.data {
+				width: 6.5rem;
+				font-size: 28px !important;
+				.suffix,
+					p {
+						font-weight: 500;
+						font-size: 19px !important;
+					}
+				
+				}
+
+			.data:last-child{
+				margin-left: 5px !important;
 			}
 		}
 	}
