@@ -16,8 +16,8 @@
 				<div class="newsAuthor"><small>发布人：{{newsDetailDate.newsAuthor}}</small></div>
 				<div class="newsViews"><small>浏览次数：{{newsDetailDate.newsClicks}}</small></div>
 			</div>
-			<div class="newsText" id="newsText">
-				{{newsDetailDate.newsText}}
+			<div class="newsText" id="newsText" v-html="newsDetailDate.newsText">
+				<!-- {{}} -->
 			</div>
 		</div>
 		<indexFooter></indexFooter>
@@ -55,7 +55,6 @@
 			getNewsDetail(newsId){
 				this.$api.newsItemApi
 				.getNewsDetailByNewsId(newsId).then((result) => {
-					console.log(result.data.data);
 					this.$data.newsDetailDate = result.data.data[0]
 				}).catch((err) => {
 					console.warn(err)
